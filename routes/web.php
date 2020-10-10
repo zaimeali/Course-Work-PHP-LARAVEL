@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'home');
-Route::view('/contact', 'contact');
+Route::view('/', 'home')->name('Home');
+Route::view('/contact', 'contact')->name('Contact');
 
 Route::get('/post/{id}', function ($id) {
     return $id;
@@ -34,7 +34,7 @@ Route::get('/blog-post/{id?}', function ($id = 1) {
         ],
     ];
     return view('blog-post', ['data' => $pages[$id]]);
-});
+})->name('Blog-Post');
 
 // For Passing HTML aur JS
 Route::get('/blog-page/{id?}', function ($id = 1) {

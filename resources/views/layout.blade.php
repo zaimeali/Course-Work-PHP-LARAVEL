@@ -7,6 +7,20 @@
         <title>@yield('title')</title>
     </head>
     <body>
+        <ul>
+            <li>
+                <a href="{{ route('Home') }}">Home</a>
+            </li>
+            <li>
+                <a href="/contact">Contact</a>
+            </li>
+            <li>
+                <a href="{{ route('Blog-Post', ['id' => 1]) }}">Blog Post 1</a>
+            </li>
+            <li>
+                <a href="{{ route('Blog-Post', ['id' => 2]) }}">Blog Post 2</a>
+            </li>
+        </ul>
         @yield('content')
     </body>
 </html>

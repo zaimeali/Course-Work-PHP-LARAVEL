@@ -13,11 +13,47 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+Route::view('/', 'home');
+Route::view('/contact', 'contact');
+
+Route::get('/post/{id}', function ($id) {
+    return $id;
 });
 
-Route::get('/contact', function () {
-    return view('contact');
+Route::get('/post/{id}/{author}', function ($id, $authorName) {
+    return $id . " " . $authorName;
 });
+
+Route::get('/blog-post/{id?}', function ($id = 1) {
+    $pages = [
+        1 => [
+            'title' => 'Hello from Post 1',
+        ],
+        2 => [
+            'title' => 'Hello from Post 2',
+        ],
+    ];
+    return view('blog-post', ['data' => $pages[$id]]);
+});
+
+// For Passing HTML aur JS
+Route::get('/blog-page/{id?}', function ($id = 1) {
+    $pages = [
+        1 => [
+            'title' => '<b>Hello from Post 1</b>',
+        ],
+        2 => [
+            'title' => '<em>Hello from Post 2</em>',
+        ],
+    ];
+    return view('blog-page', ['data' => $pages[$id]]);
+});
+
+// Route::get('/', function () {
+//     return view('home');
+// });
+
+// Route::get('/contact', function () {
+//     return view('contact');
+// });
 

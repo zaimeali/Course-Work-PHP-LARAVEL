@@ -13,8 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'home')->name('Home');
-Route::view('/contact', 'contact')->name('Contact');
+Route::view('/', 'home')->name('Index');
+Route::get('/home', 'HomeController@home')->name('Home');
+Route::get('/contact', 'HomeController@contact')->name('Contact');
+Route::get('/blog-post/{id?}', 'HomeController@blogPost')->name('Blog-Post');
 
 Route::get('/post/{id}', function ($id) {
     return $id;
@@ -23,18 +25,6 @@ Route::get('/post/{id}', function ($id) {
 Route::get('/post/{id}/{author}', function ($id, $authorName) {
     return $id . " " . $authorName;
 });
-
-Route::get('/blog-post/{id?}', function ($id = 1) {
-    $pages = [
-        1 => [
-            'title' => 'Hello from Post 1',
-        ],
-        2 => [
-            'title' => 'Hello from Post 2',
-        ],
-    ];
-    return view('blog-post', ['data' => $pages[$id]]);
-})->name('Blog-Post');
 
 // For Passing HTML aur JS
 Route::get('/blog-page/{id?}', function ($id = 1) {
@@ -56,4 +46,6 @@ Route::get('/blog-page/{id?}', function ($id = 1) {
 // Route::get('/contact', function () {
 //     return view('contact');
 // });
+
+// Route::view('/contact', 'contact')->name('Contact');
 

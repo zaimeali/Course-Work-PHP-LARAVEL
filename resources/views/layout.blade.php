@@ -8,12 +8,18 @@
     </head>
     <body>
         <ul>
+            {{-- <li>
+                <a href="{{ route('Home') }}">Home</a>
+            </li> --}}
             <li>
                 <a href="{{ route('Home') }}">Home</a>
             </li>
             <li>
-                <a href="/contact">Contact</a>
+                <a href="{{ route('Contact') }}">Contact</a>
             </li>
+            {{-- <li>
+                <a href="/contact">Contact</a>
+            </li> --}}
             <li>
                 <a href="{{ route('Blog-Post', ['id' => 1]) }}">Blog Post 1</a>
             </li>

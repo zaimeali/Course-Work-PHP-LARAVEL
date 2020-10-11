@@ -20,6 +20,9 @@
             <li>
                 <a href="{{ route('posts.index') }}">Blog Post</a>
             </li>
+            <li>
+                <a href="{{ route('posts.create') }}">Create Post</a>
+            </li>
             {{-- <li>
                 <a href="/contact">Contact</a>
             </li> --}}
@@ -30,6 +33,13 @@
                 <a href="{{ route('Blog-Post', ['id' => 2]) }}">Blog Post 2</a>
             </li> --}}
         </ul>
+
+        @if (session()->has('status'))
+            <p style="color: green;">
+                {{ session()->get('status') }}
+            </p>
+        @endif
+
         @yield('content')
     </body>
 </html>

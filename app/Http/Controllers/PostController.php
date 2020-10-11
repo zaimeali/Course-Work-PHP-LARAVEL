@@ -27,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -38,7 +38,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $blogPost = new BlogPost();
+        $blogPost->title = $request->input('title');
+        $blogPost->content = $request->input('content');
+        $blogPost->save();
+
+        $request->session()->flash('status', 'Blog Post was created successfully');
+
+        return redirect()->route('posts.show', ['post' => $blogPost->id]);
     }
 
     /**
@@ -47,10 +54,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         // dd(\App\Models\BlogPost::findOrFail($id));
         // dd(BlogPost::findOrFail($id));
+        // $request->session()->reflash(); // just to save for some time more after creating the post 
+        // but commenting bcz it will store the session for long time
         return view('posts.show', ['post' => BlogPost::findOrFail($id)]);
     }
 

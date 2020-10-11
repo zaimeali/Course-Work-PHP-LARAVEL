@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'home')->name('Index');
 Route::get('/home', 'HomeController@home')->name('Home');
 Route::get('/contact', 'HomeController@contact')->name('Contact');
-Route::resource('/posts', 'PostController')->only(['index', 'show']);
+Route::resource('/posts', 'PostController')->only(['index', 'show', 'create', 'store']);
 // Route::resource('/posts', 'PostController');
 
 // Route::get('/blog-post/{id?}', 'HomeController@blogPost')->name('Blog-Post');

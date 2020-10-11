@@ -20,12 +20,12 @@
             {{-- <li>
                 <a href="/contact">Contact</a>
             </li> --}}
-            <li>
+            {{-- <li>
                 <a href="{{ route('Blog-Post', ['id' => 1]) }}">Blog Post 1</a>
             </li>
             <li>
                 <a href="{{ route('Blog-Post', ['id' => 2]) }}">Blog Post 2</a>
-            </li>
+            </li> --}}
         </ul>
         @yield('content')
     </body>

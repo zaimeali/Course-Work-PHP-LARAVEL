@@ -16,28 +16,30 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'home')->name('Index');
 Route::get('/home', 'HomeController@home')->name('Home');
 Route::get('/contact', 'HomeController@contact')->name('Contact');
-Route::get('/blog-post/{id?}', 'HomeController@blogPost')->name('Blog-Post');
+Route::resource('/posts', 'PostController');
 
-Route::get('/post/{id}', function ($id) {
-    return $id;
-});
+// Route::get('/blog-post/{id?}', 'HomeController@blogPost')->name('Blog-Post');
 
-Route::get('/post/{id}/{author}', function ($id, $authorName) {
-    return $id . " " . $authorName;
-});
+// Route::get('/post/{id}', function ($id) {
+//     return $id;
+// });
+
+// Route::get('/post/{id}/{author}', function ($id, $authorName) {
+//     return $id . " " . $authorName;
+// });
 
 // For Passing HTML aur JS
-Route::get('/blog-page/{id?}', function ($id = 1) {
-    $pages = [
-        1 => [
-            'title' => '<b>Hello from Post 1</b>',
-        ],
-        2 => [
-            'title' => '<em>Hello from Post 2</em>',
-        ],
-    ];
-    return view('blog-page', ['data' => $pages[$id]]);
-});
+// Route::get('/blog-page/{id?}', function ($id = 1) {
+//     $pages = [
+//         1 => [
+//             'title' => '<b>Hello from Post 1</b>',
+//         ],
+//         2 => [
+//             'title' => '<em>Hello from Post 2</em>',
+//         ],
+//     ];
+//     return view('blog-page', ['data' => $pages[$id]]);
+// });
 
 // Route::get('/', function () {
 //     return view('home');

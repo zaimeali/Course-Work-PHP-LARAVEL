@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::view('/', 'home')->name('Index');
 Route::get('/home', 'HomeController@home')->name('Home');
@@ -48,4 +48,3 @@ Route::get('/blog-page/{id?}', function ($id = 1) {
 // });
 
 // Route::view('/contact', 'contact')->name('Contact');
-

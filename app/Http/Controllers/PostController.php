@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BlogPost;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -13,7 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        dd(\App\Models\BlogPost::all());
+        // dd(\App\Models\BlogPost::all());
+        dd(BlogPost::all());
     }
 
     /**
@@ -45,7 +47,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        dd(\App\Models\BlogPost::findOrFail($id));
+        // dd(\App\Models\BlogPost::findOrFail($id));
+        dd(BlogPost::findOrFail($id));
     }
 
     /**

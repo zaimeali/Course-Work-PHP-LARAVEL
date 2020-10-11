@@ -17,6 +17,9 @@
             <li>
                 <a href="{{ route('Contact') }}">Contact</a>
             </li>
+            <li>
+                <a href="{{ route('posts.index') }}">Blog Post</a>
+            </li>
             {{-- <li>
                 <a href="/contact">Contact</a>
             </li> --}}

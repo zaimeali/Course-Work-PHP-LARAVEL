@@ -15,7 +15,9 @@ class PostController extends Controller
     public function index()
     {
         // dd(\App\Models\BlogPost::all());
-        dd(BlogPost::all());
+        // dd(BlogPost::all());
+        return view('posts.index', ['posts' => BlogPost::all()]);
+        // return view('posts.index', ['posts' => []]);
     }
 
     /**
@@ -48,7 +50,8 @@ class PostController extends Controller
     public function show($id)
     {
         // dd(\App\Models\BlogPost::findOrFail($id));
-        dd(BlogPost::findOrFail($id));
+        // dd(BlogPost::findOrFail($id));
+        return view('posts.show', ['post' => BlogPost::findOrFail($id)]);
     }
 
     /**

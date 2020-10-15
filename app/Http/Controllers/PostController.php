@@ -38,6 +38,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'title' => 'required|max:100|min:5',
+            'content' => 'required|min:10',
+        ]);
+
         $blogPost = new BlogPost();
         $blogPost->title = $request->input('title');
         $blogPost->content = $request->input('content');
@@ -58,7 +63,7 @@ class PostController extends Controller
     {
         // dd(\App\Models\BlogPost::findOrFail($id));
         // dd(BlogPost::findOrFail($id));
-        // $request->session()->reflash(); // just to save for some time more after creating the post 
+        // $request->session()->reflash(); // just to save for some time more after creating the post
         // but commenting bcz it will store the session for long time
         return view('posts.show', ['post' => BlogPost::findOrFail($id)]);
     }

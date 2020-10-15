@@ -44,12 +44,16 @@ class PostController extends Controller
         //     'content' => 'required|min:10',
         // ]);
         $validatedData = $request->validated();
-        dd($validatedData);
+        // dd($validatedData);
 
-        $blogPost = new BlogPost();
-        $blogPost->title = $request->input('title');
-        $blogPost->content = $request->input('content');
-        $blogPost->save();
+        // $blogPost = new BlogPost();
+        // $blogPost->title = $request->input('title');
+        // $blogPost->content = $request->input('content');
+        // $blogPost->save();
+
+        // another way to store data
+        // called mass assignment
+        $blogPost = BlogPost::create($validatedData);
 
         $request->session()->flash('status', 'Blog Post was created successfully');
 

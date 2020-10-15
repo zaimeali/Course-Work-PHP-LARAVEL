@@ -16,4 +16,7 @@ class BlogPost extends Model
 
     // or we can do
     // php artisan make:migration change_blogposts_table_name --table=blogposts
+
+    // For using which property should be fillable
+    protected $fillable = ['title', 'content'];
 }

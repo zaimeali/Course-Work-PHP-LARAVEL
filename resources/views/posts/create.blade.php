@@ -7,12 +7,16 @@
 
         <p>
             <label for="title">
-                Title: <input name="title" type="text" id="title">
+                <span>Title:</span> 
+                <input name="title" type="text" id="title" value="{{ old('title') }}">
             </label>
         </p>
         <p>
             <label for="content">
-                Content: <textarea name="content" id="content"></textarea>
+                <span>Content:</span> 
+                <textarea name="content" id="content">
+                    {{ old('content') }}
+                </textarea>
             </label>
         </p>
 

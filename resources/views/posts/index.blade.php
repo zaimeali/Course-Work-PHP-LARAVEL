@@ -4,9 +4,11 @@
     <h1>Posts Title:</h1>
     @forelse ($posts as $post)
         <p>
-            <h5>
+            <h4>
                 <a href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
-            </h5>
+            </h4>
+            <a href="{{ route('posts.edit', ['post' => $post->id]) }}">Edit Post</a>
+            <hr>
         </p>
     @empty
         <p>No Posts!</p>

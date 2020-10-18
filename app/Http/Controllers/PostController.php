@@ -94,9 +94,16 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StorePost $request, $id)
     {
-        dd($request);
+        $post = BlogPost::findOrFail($id);
+        $validatedData = $request->validated();
+
+        $post->fill($validatedData);
+        $post->save();
+        $request->session()->flash('status', 'Blog post has been updated!');
+
+        return redirect()->route('posts.show', ['post' => $post->id]);
     }
 
     /**

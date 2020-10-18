@@ -5,30 +5,7 @@
     <form action="{{ route('posts.store') }}" method="post">
         @csrf
 
-        <p>
-            <label for="title">
-                <span>Title:</span> 
-                <input name="title" type="text" id="title" value="{{ old('title') }}">
-            </label>
-        </p>
-        <p>
-            <label for="content">
-                <span>Content:</span> 
-                <textarea name="content" id="content">
-                    {{ old('content') }}
-                </textarea>
-            </label>
-        </p>
-
-        @if ($errors->any())
-            <div>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        @include('posts._form')
 
         <button type="submit">Create</button>
     </form>

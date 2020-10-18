@@ -8,6 +8,6 @@
         
         @include('posts._form')
 
-        <button type="submit">Edit</button>
+        <button class="btn btn-primary btn-block" type="submit">Edit</button>
     </form>
 @endsection

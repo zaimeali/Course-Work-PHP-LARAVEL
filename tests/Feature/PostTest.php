@@ -89,7 +89,7 @@ class PostTest extends TestCase
             'title' => 'Updated Title',
             'content' => 'Update Content',
         ];
-        
+
         $this->put("/posts/{$post->id}", $params)
             ->assertStatus(302)
             ->assertSessionHas('status');
@@ -97,7 +97,29 @@ class PostTest extends TestCase
         $this->assertEquals(session('status'), 'Blog post has been updated!');
         $this->assertDatabaseMissing('blog_posts', $post->getAttributes());
         $this->assertDatabaseHas('blog_posts', [
-            'title' => 'Updated Title'
+            'title' => 'Updated Title',
         ]);
+    }
+
+    public function testDelete()
+    {
+        $post = $this->createDummyPost();
+
+        $this->delete("/posts/{$post->id}")
+            ->assertStatus(302)
+            ->assertSessionHas('status');
+
+        $this->assertEquals(session('status'), 'Blog post has been deleted!');
+        $this->assertDatabaseMissing('blog_posts', $post->toArray());
+    }
+
+    private function createDummyPost(): BlogPost// it'll create the instance of the BlogPost
+    {
+        $post = new BlogPost();
+        $post->title = "Delete Title";
+        $post->content = "Delete Content";
+        $post->save();
+
+        return $post;
     }
 }

@@ -19,4 +19,9 @@ class BlogPost extends Model
 
     // For using which property should be fillable
     protected $fillable = ['title', 'content'];
+
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
 }

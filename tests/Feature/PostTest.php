@@ -32,6 +32,8 @@ class PostTest extends TestCase
 
         // Assert
         $response->assertSeeText('Test Case Title');
+        $response->assertSeeText('No comments yet');
+
         $this->assertDatabaseHas('blog_posts', [
             // 'title' => 'Test Title',
             'title' => 'Test Case Title',
@@ -114,6 +116,7 @@ class PostTest extends TestCase
     }
 
     private function createDummyPost(): BlogPost// it'll create the instance of the BlogPost
+
     {
         $post = new BlogPost();
         $post->title = "Delete Title";

@@ -30,7 +30,13 @@ class PostController extends Controller
         // dd(DB::getQueryLog());
         // Lazy Loading vs Eager Loading End
 
-        return view('posts.index', ['posts' => BlogPost::all()]);
+        return view(
+            'posts.index',
+            [
+                // 'posts' => BlogPost::all(),
+                'posts' => BlogPost::withCount('comments')->get(),
+            ]
+        );
         // return view('posts.index', ['posts' => []]);
     }
 

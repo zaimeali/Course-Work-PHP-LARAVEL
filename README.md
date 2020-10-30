@@ -125,3 +125,7 @@
 
 #### Count
 1) BlogPost::withCount('comments')->get()
+
+## Factory
+1) in Laravel 8, factory helper is removed
+2) Comment::factory()->create(['blog_post_id' => 7])   // use like this

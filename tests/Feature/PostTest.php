@@ -5,6 +5,7 @@
 namespace Tests\Feature;
 
 use App\Models\BlogPost;
+use App\Models\Comment;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -130,7 +131,9 @@ class PostTest extends TestCase
     {
         // Arrange
         $post = $this->createDummyPost();
+        Comment::factory()->count(4)->create(['blog_post_id' => $post->id]);
 
         $response = $this->get('/posts');
+        $response->assertSeeText('4 comments');
     }
 }

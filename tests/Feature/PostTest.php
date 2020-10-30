@@ -115,8 +115,8 @@ class PostTest extends TestCase
         $this->assertDatabaseMissing('blog_posts', $post->toArray());
     }
 
-    private function createDummyPost(): BlogPost// it'll create the instance of the BlogPost
-
+    // it'll create the instance of the BlogPost
+    private function createDummyPost(): BlogPost
     {
         $post = new BlogPost();
         $post->title = "Delete Title";
@@ -124,5 +124,13 @@ class PostTest extends TestCase
         $post->save();
 
         return $post;
+    }
+
+    public function testSee1BlogPostWithComments()
+    {
+        // Arrange
+        $post = $this->createDummyPost();
+
+        $response = $this->get('/posts');
     }
 }

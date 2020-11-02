@@ -119,12 +119,15 @@ class PostTest extends TestCase
     // it'll create the instance of the BlogPost
     private function createDummyPost(): BlogPost
     {
-        $post = new BlogPost();
-        $post->title = "Delete Title";
-        $post->content = "Delete Content";
-        $post->save();
+        // $post = new BlogPost();
+        // $post->title = "Delete Title";
+        // $post->content = "Delete Content";
+        // $post->save();
 
-        return $post;
+        // calling state here which is defined in BlogPostFactory
+        return BlogPost::factory()->newTitle()->create();
+
+        // return $post;
     }
 
     public function testSee1BlogPostWithComments()

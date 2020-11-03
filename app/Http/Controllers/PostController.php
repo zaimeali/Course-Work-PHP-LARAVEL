@@ -31,8 +31,7 @@ class PostController extends Controller
         // Lazy Loading vs Eager Loading End
 
         return view(
-            'posts.index',
-            [
+            'posts.index', [
                 // 'posts' => BlogPost::all(),
                 'posts' => BlogPost::withCount('comments')->get(),
             ]
@@ -91,7 +90,9 @@ class PostController extends Controller
         // dd(BlogPost::findOrFail($id));
         // $request->session()->reflash(); // just to save for some time more after creating the post
         // but commenting bcz it will store the session for long time
-        return view('posts.show', ['post' => BlogPost::findOrFail($id)]);
+        return view('posts.show', [
+            'post' => BlogPost::with('comments')->findOrFail($id),
+        ]);
     }
 
     /**

@@ -129,3 +129,6 @@
 ## Factory
 1) in Laravel 8, factory helper is removed
 2) Comment::factory()->create(['blog_post_id' => 7])   // use like this
+3) $author = Author::factory()->has(Profile::factory())->create() // to first create author then create profile means using afterCreating function of Laravel Factory
+4) $author->profile // to view author profile
+5) BlogPost::with('comments')->findOrFail(2)

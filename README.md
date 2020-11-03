@@ -132,3 +132,8 @@
 3) $author = Author::factory()->has(Profile::factory())->create() // to first create author then create profile means using afterCreating function of Laravel Factory
 4) $author->profile // to view author profile
 5) BlogPost::with('comments')->findOrFail(2)
+
+
+## Changes in Laravel 7 and 8
+1) https://www.udemy.com/course/laravel-beginner-fundamentals/learn/lecture/18653996#content
+2) composer require laravel/jetstream   // for laravel 8 for authentication

@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/dashboard';
+    public const HOME = '/home'; // after registering it will redirect to home bcz i have defined home here
     protected $namespace = 'App\Http\Controllers';
 
     /**

@@ -28,6 +28,41 @@
                     <a class="p-2 text-dark" href="{{ route('register') }}">Register</a>
                     <a class="p-2 text-dark" href="{{ route('login') }}">Login</a>
                 @endunless
+
+
+                {{-- Instructor way start --}}
+                {{-- @guest
+                    <a class="p-2 text-dark" href="{{ route('register') }}">Register</a>
+                    <a class="p-2 text-dark" href="{{ route('login') }}">Login</a>
+                @else
+                    <a 
+                        class="p-2 text-dark" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();document.getElementById('logout-form').submit()"
+                    >Logout</a>
+                    <form 
+                        id="logout-form" 
+                        action="{{ route('logout') }}" 
+                        method="post" 
+                        style="display: none;"
+                    >
+                        @csrf
+                    </form>
+                @endguest --}}
+                {{-- Instructor way end --}}
+
+                {{-- @if (Route::has('register'))
+                    will check if route exist or not
+                @endif --}}
+
+                {{-- @guest
+                    checking another directive
+                @endguest --}}
+
+                {{-- @guest
+
+                @else
+                
+                @endguest --}}
             </nav>
         </div>
         {{-- <ul> --}}

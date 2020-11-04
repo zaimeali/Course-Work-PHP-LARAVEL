@@ -137,3 +137,7 @@
 ## Changes in Laravel 7 and 8
 1) https://www.udemy.com/course/laravel-beginner-fundamentals/learn/lecture/18653996#content
 2) composer require laravel/jetstream   // for laravel 8 for authentication
+3) php artisan jetstream:install inertia
+4) php artisan jetstream:install livewire
+5) npm install && npm run dev
+6) php artisan migrate

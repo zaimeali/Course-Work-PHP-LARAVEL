@@ -51,3 +51,7 @@ Route::resource('/posts', 'PostController');
 // });
 
 // Route::view('/contact', 'contact')->name('Contact');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

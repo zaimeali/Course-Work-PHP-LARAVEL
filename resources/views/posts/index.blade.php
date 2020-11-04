@@ -1,7 +1,8 @@
 @extends('layout')
 
 @section('content')
-    <h1>Posts Title:</h1>
+    <h1 class="text-2xl">Post Title</h1>
+    <hr>
     @forelse ($posts as $post)
         <p>
             <h4>
@@ -10,18 +11,20 @@
             @if ($post->comments_count)
                 <p>{{ $post->comments_count }} comments</p>
             @else
-                <p>No comments yet</p>
+                <p class="text-gray-500 text-sm">No comments yet</p>
             @endif
-            <a class="btn btn-primary" href="{{ route('posts.edit', ['post' => $post->id]) }}">Edit Post</a>
-            <form 
-                action="{{ route('posts.destroy', ['post' => $post->id]) }}" 
-                method="post"
-                class="fm-inline"
-            >
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-secondary" type="submit">Delete Post</button>
-            </form>
+            <div class="d-flex">
+                <a class="btn btn-primary mr-3" href="{{ route('posts.edit', ['post' => $post->id]) }}">Edit Post</a>
+                <form 
+                    action="{{ route('posts.destroy', ['post' => $post->id]) }}" 
+                    method="post"
+                    class="fm-inline"
+                >
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-secondary" type="submit">Delete Post</button>
+                </form>
+            </div>
             <hr>
         </p>
     @empty

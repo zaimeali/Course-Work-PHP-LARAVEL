@@ -17,6 +17,7 @@
 10) https://github.com/piotr-jura-udemy/laravel-cheat-sheet/blob/master/docs/0028-testing.md
 11) https://github.com/piotr-jura-udemy/laravel-cheat-sheet/blob/master/docs/0036-one-to-one.md
 12) https://github.com/piotr-jura-udemy/laravel-cheat-sheet/blob/master/docs/0039-one-to-many.md
+13) https://github.com/piotr-jura-udemy/laravel-cheat-sheet/blob/master/docs/0051-auth-component.md
 
 
 ### VSCode Shortcuts
@@ -141,3 +142,13 @@
 4) php artisan jetstream:install livewire
 5) npm install && npm run dev
 6) php artisan migrate
+
+## Guard Component
+1) Each guard component has a driver and a user provider
+2) Driver can be either session or token
+3) User Provider driver has Eloquent and Database
+4) Token is used for API 
+5) User Provider decides where and how the users should be fetched
+6) Eloquent => User Model
+7) Database => User dB
+8) In config/Auth.php => guard is defined there in which api and web is defined.

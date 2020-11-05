@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::view('/', 'home')->name('Index');
-Route::get('/home', 'HomeController@home')->name('Home');
+Route::get('/home', 'HomeController@home')
+    ->name('Home')
+    // ->middleware('auth')  // it'll protect the route
+    ;
 Route::get('/contact', 'HomeController@contact')->name('Contact');
 // Route::resource('/posts', 'PostController')->only(['index', 'show', 'create', 'store', 'edit', 'update']);
 Route::resource('/posts', 'PostController');

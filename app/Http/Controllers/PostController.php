@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function __construct() 
+    {
+        $this->middleware('auth')  // it'll protect from all the routes of the post and it's action
+            ->only(['create', 'store', 'edit', 'update', 'destroy']);  // define on which route should be protected
+    }
+
     /**
      * Display a listing of the resource.
      *

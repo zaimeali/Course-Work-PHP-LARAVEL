@@ -16,18 +16,34 @@
                 <a class="p-2 text-dark" href="{{ route('Contact') }}">Contact</a>
                 <a class="p-2 text-dark" href="{{ route('posts.index') }}">Blog Posts</a>
                 <a class="p-2 text-dark" href="{{ route('posts.create') }}">Add Blog Post</a>
-                @auth
+                {{-- @auth
                     <a class="p-2 text-dark" href="{{ route('dashboard') }}">Dashboard</a>
                     <!-- Authentication -->
                     <form style="display: inline;" method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button class="p-2 text-dark">Log out</button>
+                        <button class="p-2 text-dark">
+                            Log out ({{ Auth::user()->name }})
+                        </button>
                     </form>
                 @endauth
                 @unless (Auth::check())
                     <a class="p-2 text-dark" href="{{ route('register') }}">Register</a>
                     <a class="p-2 text-dark" href="{{ route('login') }}">Login</a>
-                @endunless
+                @endunless --}}
+
+                @auth
+                    <a class="p-2 text-dark" href="{{ route('dashboard') }}">Dashboard</a>
+                    <!-- Authentication -->
+                    <form style="display: inline;" method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button class="p-2 text-dark">
+                            Log out ({{ Auth::user()->name }})
+                        </button>
+                    </form>                             
+                @else
+                    <a class="p-2 text-dark" href="{{ route('register') }}">Register</a>
+                    <a class="p-2 text-dark" href="{{ route('login') }}">Login</a>
+                @endauth
 
 
                 {{-- Instructor way start --}}

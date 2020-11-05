@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     public function home()
     {
+        // dd(Auth::id()); // it'll tell the id of user
+        // dd(Auth::user()); // it'll tell the user info
+        // dd(Auth::check()); // it'll check if user is authenticated or not
         return view('home');
     }
 

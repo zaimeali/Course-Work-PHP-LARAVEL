@@ -43,14 +43,23 @@ class PostTest extends TestCase
 
     public function testStoreValid()
     {
+        // $user = $this->user();
+
         $params = [
             'title' => 'Valid Title',
             'content' => 'At least 10 characters',
         ];
 
-        $this->post('/posts', $params)
-            ->assertStatus(302) // status for successful request
-            ->assertSessionHas('status'); // to check session value
+        // $this->actingAs($user);
+
+        $this->actingAs($this->user())
+            ->post('/posts', $params)
+            ->assertStatus(302)
+            ->assertSessionHas('status');
+
+        // $this->post('/posts', $params)
+        //     ->assertStatus(302) // status for successful request
+        //     ->assertSessionHas('status'); // to check session value
         $this->assertEquals(session('status'), 'Blog Post was created successfully');
     }
 
@@ -61,9 +70,14 @@ class PostTest extends TestCase
             'content' => 'c',
         ];
 
-        $this->post('/posts', $params)
+        $this->actingAs($this->user())
+            ->post('/posts', $params)
             ->assertStatus(302)
             ->assertSessionHas('errors');
+
+        // $this->post('/posts', $params)
+        //     ->assertStatus(302)
+        //     ->assertSessionHas('errors');
 
         $messages = session('errors');
         // $messages = session('errors')->getMessages(); // if use this then don't use getBag
@@ -93,9 +107,14 @@ class PostTest extends TestCase
             'content' => 'Update Content',
         ];
 
-        $this->put("/posts/{$post->id}", $params)
+        $this->actingAs($this->user())
+            ->put("/posts/{$post->id}", $params)
             ->assertStatus(302)
             ->assertSessionHas('status');
+
+        // $this->put("/posts/{$post->id}", $params)
+        //     ->assertStatus(302)
+        //     ->assertSessionHas('status');
 
         $this->assertEquals(session('status'), 'Blog post has been updated!');
         $this->assertDatabaseMissing('blog_posts', $post->getAttributes());
@@ -108,9 +127,14 @@ class PostTest extends TestCase
     {
         $post = $this->createDummyPost();
 
-        $this->delete("/posts/{$post->id}")
+        $this->actingAs($this->user())
+            ->delete("/posts/{$post->id}")
             ->assertStatus(302)
             ->assertSessionHas('status');
+
+        // $this->delete("/posts/{$post->id}")
+        //     ->assertStatus(302)
+        //     ->assertSessionHas('status');
 
         $this->assertEquals(session('status'), 'Blog post has been deleted!');
         $this->assertDatabaseMissing('blog_posts', $post->toArray());

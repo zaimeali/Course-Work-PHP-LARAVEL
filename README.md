@@ -152,3 +152,8 @@
 6) Eloquent => User Model
 7) Database => User dB
 8) In config/Auth.php => guard is defined there in which api and web is defined.
+
+## Database Seeding
+1) php artisan make:migration add_user_to_blog_posts_table
+2) php artisan migrate:refresh   // it'll rollback all the migrations and then up the migration again
+3) php artisan db:seed

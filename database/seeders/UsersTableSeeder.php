@@ -14,7 +14,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        // by default setting 20 users
+        $usersCount = (int) $this->command->ask('How many users would you like?', 20); // it'll return string so will convert into integer
         User::factory()->newUser()->create();
-        User::factory(20)->create(); // it'll create 20 users
+        User::factory($usersCount)->create(); // it'll create 20 users
     }
 }

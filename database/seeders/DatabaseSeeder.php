@@ -47,11 +47,18 @@ class DatabaseSeeder extends Seeder
         // });
         // $this->call(CommentsTableSeeder::class); // call like this
 
+        // Now using cmd line command method from seeder class
+        if ($this->command->confirm('Do you want to refresh the database?')) {
+            $this->command->call('migrate:refresh'); // will run the command
+            $this->command->info('Database was refreshed'); // will print the output message
+        }
+
         // or call like this
         $this->call([
             UsersTableSeeder::class,
             BlogPostsTableSeeder::class,
             CommentsTableSeeder::class,
         ]);
+
     }
 }

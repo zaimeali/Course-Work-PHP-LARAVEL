@@ -160,3 +160,4 @@
 4) after changes made in DatabaseSeeder file 
 5) then run php artisan db:seed
 6) php artisan migrate:refresh --seed  // it'll re up the db and run the seed file
+7) each() is also a helper function which takes closure as a param, it works like a loop

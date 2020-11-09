@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\BlogPost;
-use App\Models\Comment;
-use App\Models\User;
 // use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
+
+// use
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,23 +25,33 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // state defined for default value
-        $doe = User::factory()->newUser()->create();
+        // $doe = User::factory()->newUser()->create();
 
-        $else = User::factory(20)->create();
+        // $else = User::factory(20)->create();
 
-        // dd(get_class($doe), get_class($else));  // here $doe is just user object while $else is a collection
-        $users = $else->concat([$doe]); // that's why concatenating $doe(by making array) in $else collection
+        // // dd(get_class($doe), get_class($else));  // here $doe is just user object while $else is a collection
+        // $users = $else->concat([$doe]); // that's why concatenating $doe(by making array) in $else collection
 
         // dd($users->count()); // to count users
+        // $this->call(UsersTableSeeder::class); // call like this
 
-        $posts = BlogPost::factory()->count(50)->make()->each(function ($post) use ($users) {
-            $post->user_id = $users->random()->id;
-            $post->save();
-        });
+        // $posts = BlogPost::factory()->count(50)->make()->each(function ($post) use ($users) {
+        //     $post->user_id = $users->random()->id;
+        //     $post->save();
+        // });
+        // $this->call(BlogPostsTableSeeder::class); // call like this
 
-        $comments = Comment::factory()->count(150)->make()->each(function ($comment) use ($posts) {
-            $comment->blog_post_id = $posts->random()->id;
-            $comment->save();
-        });
+        // $comments = Comment::factory()->count(150)->make()->each(function ($comment) use ($posts) {
+        //     $comment->blog_post_id = $posts->random()->id;
+        //     $comment->save();
+        // });
+        // $this->call(CommentsTableSeeder::class); // call like this
+
+        // or call like this
+        $this->call([
+            UsersTableSeeder::class,
+            BlogPostsTableSeeder::class,
+            CommentsTableSeeder::class,
+        ]);
     }
 }

@@ -161,3 +161,11 @@
 5) then run php artisan db:seed
 6) php artisan migrate:refresh --seed  // it'll re up the db and run the seed file
 7) each() is also a helper function which takes closure as a param, it works like a loop
+8) for creating individual class seeder (for models)
+9) php artisan make:seeder UsersTableSeeder // best practice is to use the same model and table name in a seeder
+10) composer dump-autoload // to regenerate the auto loader 
+11) have to run the above composer command each time when create seeder class.
+12) then run php artisan migrate:refresh --seed
+13) if want to run only specific seeder file/class
+14) php artisan migrate:refresh // for empty db with just tables
+14) php artisan db:seed --class=UsersTableSeeder  // it will seed the Users Table

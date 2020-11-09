@@ -157,3 +157,6 @@
 1) php artisan make:migration add_user_to_blog_posts_table
 2) php artisan migrate:refresh   // it'll rollback all the migrations and then up the migration again
 3) php artisan db:seed
+4) after changes made in DatabaseSeeder file 
+5) then run php artisan db:seed
+6) php artisan migrate:refresh --seed  // it'll re up the db and run the seed file

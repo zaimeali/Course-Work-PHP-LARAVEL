@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
+use App\Models\BlogPost;
+use App\Models\Comment;
+use App\Models\User;
 // use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,8 +26,23 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // state defined for default value
-        \App\Models\User::factory()->newUser()->create();
+        $doe = User::factory()->newUser()->create();
 
-        \App\Models\User::factory(10)->create();
+        $else = User::factory(20)->create();
+
+        // dd(get_class($doe), get_class($else));  // here $doe is just user object while $else is a collection
+        $users = $else->concat([$doe]); // that's why concatenating $doe(by making array) in $else collection
+
+        // dd($users->count()); // to count users
+
+        $posts = BlogPost::factory()->count(50)->make()->each(function ($post) use ($users) {
+            $post->user_id = $users->random()->id;
+            $post->save();
+        });
+
+        $comments = Comment::factory()->count(150)->make()->each(function ($comment) use ($posts) {
+            $comment->blog_post_id = $posts->random()->id;
+            $comment->save();
+        });
     }
 }

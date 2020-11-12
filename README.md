@@ -170,3 +170,7 @@
 14) php artisan migrate:refresh // for empty db with just tables
 15) php artisan db:seed --class=UsersTableSeeder  // it will seed the Users Table
 16) after making interactive use php artisan db:seed only to run the seeder (on lecture 79)
+
+
+## Delete
+1) php artisan make:migration AddCascadeDeleteToCommentsTable

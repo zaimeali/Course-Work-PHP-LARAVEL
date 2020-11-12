@@ -24,4 +24,13 @@ class BlogPost extends Model
     {
         return $this->hasMany('App\Models\Comment');
     }
+
+    // One way to delete
+    public static function boot()
+    {
+        parent::boot();
+        static::deleting(function (BlogPost $blogPost) {
+            $blogPost->comments()->delete();
+        });
+    }
 }

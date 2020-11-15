@@ -174,3 +174,7 @@
 
 ## Delete
 1) php artisan make:migration AddCascadeDeleteToCommentsTable
+
+### Soft Deletes
+1) add trait: use SoftDeletes trait in a model
+2) php artisan make:migration AddSoftDeletesToBlogPostsTable
